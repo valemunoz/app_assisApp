@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>Chilemap</title>
+        <link rel="shortcut icon" href="images/icon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+				<meta name="author" content="Chilemap.cl" />     
+        
+        <link rel="stylesheet" href="css/themes/themes.min.css" />
+				<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/style.mobile.css" />
+	<script src="js/jquery-1.11.1.min.js"></script>
+
+	
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script src="js/funciones.js"></script>
+   			<script src="cordova.js"></script>
+   			
+   			
+   			<script>
+   				document.addEventListener("offline", offline, false);
+					document.addEventListener("online", online, false);
+   				document.addEventListener("deviceready", deviceListo, false);
+   				
+   				</script>
+    </head>
+    <body>
+    <div data-role="page" id="mappage" data-theme="a">
+
+   		<div data-role="header">   			 
+   			
+      	<h3>Asistencia</h3>
+      	
+      		
+   		</div>    		
+   	  <div data-role="content" id="contenido_prin" >
+   	  	
+					<div data-role="popup" id="myPopup" class="ui-content">
+							<p>This is a popup with the <code>ui-content</code> class added to the popup container.</p>
+					</div>
+					<div data-role="popup" id="myPopup_static" class="ui-content" style="max-width:280px" data-dismissible="false">
+				    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a>
+						<div id=cont_static></div>
+					</div>
+					
+					<div id="menu_sesion">
+					</div>
+					<div id="contenido_sesion">
+						
+					<div class="ui-bar ui-bar-a" style="text-align:Center;" id='bienv_home'>
+    	    	Bienvenido a Aisistencia<br><br><br>
+    	    	Ingrese sus credenciales para continuar:
+    	    	<br><br>
+    	    	<input class=input_form  type="text" id="user" name="user" value="" placeholder="Usuario">
+    	    	<input class=input_form  type="password" id="clave" name="clave" value="" placeholder="Contrase&ntilde;a">
+    	    	<input type="button" onclick="inicio();" value="Iniciar">
+    	    	
+    	    	
+					</div>	
+						
+					</div>          
+					
+    	</div>
+    	<div data-role="footer" data-id="foo1" data-position="fixed" id="footer_txt" data-theme="b">
+    		<div id="menu_footer"></div>
+    	&copy;2015 Architeq Ltda
+			</div><!-- /footer -->
+    	
+    	
+    	  
+ </div>
+		<div data-role="page" id="mod_admin" data-theme="a">
+
+	<div data-role="header" >
+	   			 
+      		<h3>Asistencia</h3>
+      		
+   		</div>   		
+   	  <div data-role="content" id="contenido_admin" >
+   	  	
+    	  	
+					
+    	</div>
+    	  
+ 		</div>  
+<!--div data-role="page" id="mod_info" data-theme="a">
+
+	<div data-role="header" >
+	   			 <img id=back_boton src="img/left.png" class="ui-btn-left" onclick="volver();">
+      		<h3><img src="img/markan.jpg" width="40%"></h3>
+      		
+   		</div>   		
+   	  <div data-role="content" id="contenido_info" >
+   	  	
+    	  	
+    	</div>
+    	  
+ 		</div>  
+<div data-role="page" id="mod_mapa" data-theme="a">
+
+	<div data-role="header" >
+	   			 <img id=back_boton src="img/left.png" class="ui-btn-left" onclick="volver();">
+      		<h3><img src="img/markan.jpg" width="40%"></h3>
+      		
+   		</div>   		
+   	  <div data-role="content" id="contenido_map" >
+   	  	
+    	  	
+    	</div>
+    	  
+ 		</div-->  
+
+ 			<div id=output></div>
+    </body>
+</html>

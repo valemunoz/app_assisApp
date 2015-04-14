@@ -1,0 +1,168 @@
+#footer_txt
+{
+	text-align:center;
+	
+	color:#C0C0C0 !important;
+	font-size:90%;
+}
+#bienv_home
+{
+	margin-top:10%;
+	font-size:120%;
+	
+}
+#text_sup
+{
+	font-size:65% !important;
+}
+#text_supIz
+{
+	
+	float:left !important;
+}
+.input_form
+{
+	height:60px;
+	color:#8E878F;
+	
+}
+.bottom_coment
+{
+	/*background-color: #8E878F;*/
+	color:white;
+	font-weight:bold;
+  border-radius: 6px;
+  height: 60px;
+  width: 100%;
+}
+
+.div_static
+{
+	width:200px !important;
+}
+#bien_barra
+{
+	height: 30px !important;
+}
+.mini_txt
+{
+	font-size=8px !important;
+}
+.txt_titulo
+{
+	
+	font-size=14px !important;
+	height:20px !important;
+	width:80% !important;
+	border:1px #676767 solid;
+	padding:8px;
+	color:#575757;
+	text-align:center;
+	font-weight:bold;
+	margin: 0 auto;
+	border-radius: 5px;
+}
+.txt_tituloPop
+{
+	font-size=14px !important;
+	
+	width:80% !important;
+	border:1px #676767 solid;
+	padding:8px;
+	color:#575757;
+	text-align:center;
+	font-weight:bold;
+	margin: 0 auto;
+	border-radius: 5px;
+}
+
+#map
+{
+	margin: 0 auto;
+	width:95% !important;	
+	height:65% !important;
+	position:absolute;
+	
+	
+}
+
+.clock {
+    width: 60% !important;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid #333;
+    color: #fff;
+}
+
+#Date {
+    font-family: 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+    font-size: 200%;
+    text-align: center;
+    text-shadow: 0 0 5px #676767;
+}
+
+#reloj{
+    width: 50%;
+    margin: 0 auto;
+    padding: 0px;
+    list-style: none;
+    text-align: center;
+    color:#676767;
+}
+
+.relojli {
+    display: inline;
+  font-size: 180%;
+    text-align: center;
+    font-family: 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+    text-shadow: 0 0 5px #676767;
+    color:#676767;
+}
+
+#point {
+    position: relative;
+    -moz-animation: mymove 1s ease infinite;
+    -webkit-animation: mymove 1s ease infinite;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Simple Animation */
+@-webkit-keyframes mymove {
+    0% {opacity: 1.0;
+    text-shadow: 0 0 20px #00c6ff;
+}
+
+50% {
+    opacity: 0;
+    text-shadow: none;
+}
+
+100% {
+    opacity: 1.0;
+    text-shadow: 0 0 20px #00c6ff;
+}	
+}
+
+@-moz-keyframes mymove {
+    0% {
+        opacity: 1.0;
+        text-shadow: 0 0 20px #00c6ff;
+    }
+
+    50% {
+        opacity: 0;
+        text-shadow: none;
+    }
+
+    100% {
+        opacity: 1.0;
+        text-shadow: 0 0 20px #00c6ff;
+    };
+}
+
+#photo{  
+    
+    width:200px;  
+    height:200px;  
+}  
