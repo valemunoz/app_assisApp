@@ -166,3 +166,14 @@
     width:200px;  
     height:200px;  
 }  
+#teclado
+{
+	width:60% !important;
+	margin: 0 auto;
+}
+#teclado_num
+{
+	height:45px !important;
+	font-weight:bold;
+	font-size:23.5px !important;
+}

@@ -1,5 +1,5 @@
 var path_query="http://obvii.net/obvii/assisapp/query.php";
-var MK_INTERNET=false;
+var MK_INTERNET=true;
 var MSG_OFFLINE="No hay disponible coneccion a Internet. Por favor revise sus conecciones";
 var MSG_OFFLINE="No hay disponible coneccion a Internet. Algunas opciones seran limitadas";
 var path_upload="http://obvii.net/obvii/assisapp/uploadb.php";
@@ -605,8 +605,11 @@ function getImage() {
         }
         
         function uploadPhoto(imageURI) {
-        	openPopstatic("Marca realizada con exito!");
-        	  //document.getElementById("photo").src=imageURI
+        	cleanNumero();
+        	openPopstatic("Marca realizada con exito!<br>");
+        	 //var photo = document.getElementById('photo');    
+      		 //photo.src = "data:image/jpeg;base64," + imageURI;  
+        	 
         	  //uploadPhoteServer("foto");
             
         }
@@ -639,4 +642,19 @@ function getImage() {
         function fail(error) {
         	$.mobile.loading( 'hide');
             //alert("fallo");
+        }
+        function refrescar()
+        {
+        	window.location="index.html";
+        }
+        function calcNumero(numero)
+        {         
+        	valor=document.getElementById("user").value;
+        	valor=valor+""+numero+"";
+        	document.getElementById("user").value=valor;
+        }
+        function cleanNumero()
+        {
+        	document.getElementById("user").value="";
+        
         }
