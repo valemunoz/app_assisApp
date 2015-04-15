@@ -599,7 +599,8 @@ function getImage() {
             // Retrieve image file location from specified source
            navigator.camera.getPicture(uploadPhoto, fail, {
         			quality: 100,
-        			destinationType: destinationType.FILE_URI
+        			destinationType: destinationType.FILE_URI,
+        			cameraDirection: navigator.camera.Direction.FRONT 
     			});
 
         }
