@@ -22,6 +22,12 @@
    			
    			
    			<script>
+   				$.mobile.loading( 'show', {
+				text: 'Cargando...',
+				textVisible: true,
+				theme: 'a',
+				html: ""
+			});
    				document.addEventListener("offline", offline, false);
 					document.addEventListener("online", online, false);
    				document.addEventListener("deviceready", deviceListo, false);

@@ -1,10 +1,18 @@
-var path_query="http://obvii.net/obvii/assisapp/query.php";
-var MK_INTERNET=true;
+ var path_query="http://obvii.net/obvii/assisapp/query.php";
+var MK_INTERNET=false;
 var MSG_OFFLINE="No hay disponible coneccion a Internet. Por favor revise sus conecciones";
 var MSG_OFFLINE="No hay disponible coneccion a Internet. Algunas opciones seran limitadas";
+var MSG_USER_NO="Usuario Invalido";
+var MSG_NOTARJETA="Tarjeta no valida";
+var MSG_SESION=false;
 var path_upload="http://obvii.net/obvii/assisapp/uploadb.php";
 
 var MK_PHOTO="";
+var ASS_DATO="";
+var ASS_TARJETA=0;
+var ASS_USUARIO=0;
+var ASS_TIPO=0;
+var ASS_FILE="";
 /*var MK_LON=0;
 var MK_LAT=0;
 var MK_ACCU=0;
@@ -455,11 +463,12 @@ function inicio()
 	
 	var user=$.trim(document.getElementById("user").value);
 	var clave=$.trim(document.getElementById("clave").value);
-	
 	if(user!="" && clave!="")
 	{
+		
 		if(MK_INTERNET)
 		{
+			
 			$.mobile.loading( 'show', {
 					text: 'Validando',
 					textVisible: true,
@@ -467,17 +476,16 @@ function inicio()
 					html: ""
 				});
 				
-			$("#contenido_sesion").load(path_query, 
-				{tipo:1} 
+			$("#output").load(path_query, 
+				{tipo:5, user:user, clave:clave} 
 					,function(){	
-						$('#contenido_sesion').trigger('create');
-						$.mobile.loading( 'hide');				
-						loadMenu();
+				
 					}
 					);
 		
 		}else
 			{
+				
 				openPopstatic(MSG_OFFLINE);		
 			}	
 		
@@ -486,36 +494,62 @@ function inicio()
 		openPopstatic("Debe ingresar credenciales validas.");		
 	}
 }
-function validar()
+function validar(id_usuario)
 {
-	var texto="Bienvenido Usuario!<br><br>Seleccione una opci&oacute;n</hr><br><br>";
-	texto +="<input type='button' value='Asistencia' class=bottom_coment onclick='loadAsistencia();'><br>";
-	texto +="<input type='button' value='Colacion' class=bottom_coment onclick='loadColacion();'><br>";
-	openPopstatic(texto);		
 	
+	var tipo_us=0;
+	if(id_usuario==0)
+	{
+		tipo_us=1;
+		id_usuario=document.getElementById("user").value;
+		$("#output").load(path_query, 
+			{tipo:10, codigo:id_usuario} 
+				,function(){						
+					
+					
+				}
+	);
+	}else
+		{
+	
+			var texto="Bienvenido Usuario!<br><br>Seleccione una opci&oacute;n</hr><br><br>";
+			texto +="<input type='button' value='Asistencia' class=bottom_coment onclick='loadAsistencia("+tipo_us+","+id_usuario+");'><br>";
+			texto +="<input type='button' value='Colacion' class=bottom_coment onclick='loadColacion("+tipo_us+","+id_usuario+");'><br>";
+			openPopstatic(texto);		
+	}
 }
-function loadColacion()
+function loadColacion(tipo_us,id_usuario)
 {
 	var texto="Marca para Colaci&oacute;n!<br><br>Seleccione una opci&oacute;n</hr><br><br>";
-	texto +="<input type='button' value='Entrada' class=bottom_coment onclick='marcaColacion(0);'><br>";
-	texto +="<input type='button' value='Salida' class=bottom_coment onclick='marcaColacion(1);'><br>";
+	texto +="<input type='button' value='Entrada' class=bottom_coment onclick='marcaColacion(0,"+tipo_us+","+id_usuario+");'><br>";
+	texto +="<input type='button' value='Salida' class=bottom_coment onclick='marcaColacion(1,"+tipo_us+","+id_usuario+");'><br>";
 	openPopstatic(texto);		
 }
-function loadAsistencia()
+function loadAsistencia(tipo_us,id_usuario)
 {
+	
 	var texto="Marca para Asistencia!<br><br>Seleccione una opci&oacute;n</hr><br><br>";
-	texto +="<input type='button' value='Entrada' class=bottom_coment onclick='marcaAsistencia(0);'><br>";
-	texto +="<input type='button' value='Salida' class=bottom_coment onclick='marcaAsistencia(1);'><br>";
+	texto +="<input type='button' value='Entrada' class=bottom_coment onclick='marcaAsistencia(0,"+tipo_us+","+id_usuario+");'><br>";
+	texto +="<input type='button' value='Salida' class=bottom_coment onclick='marcaAsistencia(1,"+tipo_us+","+id_usuario+");'><br>";
 	openPopstatic(texto);		
 }
-function marcaColacion(tipo)
+function marcaColacion(tipo,tipo_us,id_usuario)
 {
+	ASS_USUARIO=id_usuario;
+  ASS_TIPO=tipo_us;  
+  ASS_MARCA=tipo;
+  ASS_TIPO_MARCA=2;
+  
 	getImage();
 	
 	
 }
-function marcaAsistencia(tipo)
+function marcaAsistencia(tipo,tipo_us,id_usuario)
 {
+	ASS_USUARIO=id_usuario;
+  ASS_TIPO=tipo_us;
+  ASS_MARCA=tipo;
+  ASS_TIPO_MARCA=1;
 	getImage();
 	
 	
@@ -544,8 +578,27 @@ function loadMenu()
 }
 function deviceListo()
 {
+	
 	 pictureSource = navigator.camera.PictureSourceType;
    destinationType = navigator.camera.DestinationType;
+   
+   if(MK_INTERNET)
+		{
+			
+			$("#output").load(path_query, 
+			{tipo:6} 
+				,function(){
+		
+					$('#output').trigger('create');	
+					$.mobile.loading( 'hide');
+					
+				}
+			);
+		}else
+			{
+		
+				openPopstatic(MSG_OFFLINE);	
+			}
 }
 function loadInitAdmin()
 {
@@ -571,8 +624,11 @@ function volver()
 }
 function inicioAdmin()
 {
+	var user=document.getElementById("user2").value;
+  var clave=document.getElementById("clave2").value;
+        	
 		$("#contenido_sesion").load(path_query, 
-			{tipo:3} 
+			{tipo:3, user:user, clave:clave} 
 				,function(){				
 					
 					$('#contenido_sesion').trigger('create');
@@ -606,18 +662,25 @@ function getImage() {
         }
         
         function uploadPhoto(imageURI) {
-        	cleanNumero();
-        	openPopstatic("Marca realizada con exito!<br>");
+        	$.mobile.loading( 'show', {
+				text: 'Marcando',
+				textVisible: true,
+				theme: 'a',
+				html: ""
+			});
+        	
+        	//openPopstatic("Imagen almacenada!<br>");
         	 //var photo = document.getElementById('photo');    
       		 //photo.src = "data:image/jpeg;base64," + imageURI;  
-        	 
-        	  //uploadPhoteServer("foto");
+      		 newDate=new Date();
+        	 ASS_FILE=ASS_USUARIO+"_"+newDate.getMinutes()+""+newDate.getSeconds();
+        	 uploadPhoteServer(ASS_FILE,imageURI);
             
         }
-				function uploadPhoteServer(nomFile)
+				function uploadPhoteServer(nomFile,imageURI)
 				{
-					var imageURI=document.getElementById("photo").src;
-        	  alert(imageURI);
+					//var imageURI=document.getElementById("photo").src;
+        	  //alert(imageURI);
             var options = new FileUploadOptions();
             options.fileKey="i_file";
             options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
@@ -635,7 +698,15 @@ function getImage() {
             ft.upload(imageURI, path_upload, win, fail, options,true);
 				}
         function win(r) {
-            $.mobile.loading( 'hide');
+            
+            $("#output").load(path_query, 
+					{tipo:9, usuario:ASS_USUARIO, tipo_us:ASS_TIPO, tipo_marca:ASS_TIPO_MARCA, marca:ASS_MARCA,archivo:ASS_FILE} 
+						,function(){						
+							
+					
+					}
+					);
+						
             //alert("Envio");
             
         }
@@ -644,10 +715,7 @@ function getImage() {
         	$.mobile.loading( 'hide');
             //alert("fallo");
         }
-        function refrescar()
-        {
-        	window.location="index.html";
-        }
+       
         function calcNumero(numero)
         {         
         	valor=document.getElementById("user").value;
@@ -658,4 +726,77 @@ function getImage() {
         {
         	document.getElementById("user").value="";
         
+        }
+function loadSesion()
+{
+	MSG_SESION=false;
+	$("#contenido_sesion").load(path_query, 
+			{tipo:7} 
+				,function(){				
+					
+					$('#contenido_sesion').trigger('create');
+					
+				}
+			);
+}
+function leeMF(datos)
+{
+	//alert("paso::"+datos);
+	ASS_DATO=datos;
+	
+}
+
+function noleeMF()
+{
+	//alert("Nopaso");
+}
+function onNfc(nfcEvent)
+{
+	
+	var tag = nfcEvent.tag;      
+  ASS_TARJETA=nfc.bytesToHexString(tag.id);  
+  nfc.readMifareSecBloc(1,1,validaRut,noleeMF);
+  
+  
+}
+function validaRut(dato)
+{
+	$("#output").load(path_query, 
+			{tipo:8, rut:dato, tarjeta:ASS_TARJETA} 
+				,function(){						
+					
+					
+				}
+	);
+}
+function failure()
+{
+	alert("fallo");
+}
+function onNdef()
+{
+	alert("onNdef");
+}  
+function salir()
+{
+	$("#output").load(path_query, 
+			{tipo:11} 
+				,function(){						
+					
+					
+				}
+	);
+}
+
+ function volverInicio()
+        {
+        
+        	$("#contenido_sesion").load(path_query, 
+					{tipo:1} 
+						,function(){	
+							$('#contenido_sesion').trigger('create');
+							$.mobile.loading( 'hide');										
+							loadMenu();
+						}
+						);
         }
