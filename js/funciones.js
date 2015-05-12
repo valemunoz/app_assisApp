@@ -5,6 +5,14 @@ var MSG_OFFLINE="No hay disponible coneccion a Internet. Algunas opciones seran 
 var MSG_USER_NO="Usuario Invalido";
 var MSG_NOTARJETA="Tarjeta no valida";
 var MSG_SESION=false;
+
+var CONF_FOTO=false;
+var CONF_TIPO_ASIS=0;
+var CONF_ASIS=false;
+var CONF_TIPO_COLACION=0;
+var CONF_COLACION=false;
+			
+
 var path_upload="http://obvii.net/obvii/assisapp/uploadb.php";
 
 var MK_PHOTO="";
@@ -494,7 +502,7 @@ function inicio()
 		openPopstatic("Debe ingresar credenciales validas.");		
 	}
 }
-function validar(id_usuario)
+function validar(id_usuario,nombre)
 {
 	
 	var tipo_us=0;
@@ -512,9 +520,13 @@ function validar(id_usuario)
 	}else
 		{
 	
-			var texto="Bienvenido Usuario!<br><br>Seleccione una opci&oacute;n</hr><br><br>";
+			var texto="Bienvenido Usuario: <br><strong>"+nombre+"</strong><br>Seleccione una opci&oacute;n</hr><br><br>";
 			texto +="<input type='button' value='Asistencia' class=bottom_coment onclick='loadAsistencia("+tipo_us+","+id_usuario+");'><br>";
-			texto +="<input type='button' value='Colacion' class=bottom_coment onclick='loadColacion("+tipo_us+","+id_usuario+");'><br>";
+			if(CONF_COLACION=='t')
+			{
+				texto +="<input type='button' value='Colacion' class=bottom_coment onclick='loadColacion("+tipo_us+","+id_usuario+");'><br>";
+			}
+			
 			openPopstatic(texto);		
 	}
 }
@@ -539,8 +551,19 @@ function marcaColacion(tipo,tipo_us,id_usuario)
   ASS_TIPO=tipo_us;  
   ASS_MARCA=tipo;
   ASS_TIPO_MARCA=2;
-  
-	getImage();
+  if(CONF_FOTO)
+  {
+		getImage();
+	}else
+	{
+		 $("#output").load(path_query, 
+					{tipo:9, usuario:ASS_USUARIO, tipo_us:ASS_TIPO, tipo_marca:ASS_TIPO_MARCA, marca:ASS_MARCA,archivo:ASS_FILE} 
+						,function(){						
+							
+					
+					}
+					);
+	}
 	
 	
 }
@@ -550,7 +573,19 @@ function marcaAsistencia(tipo,tipo_us,id_usuario)
   ASS_TIPO=tipo_us;
   ASS_MARCA=tipo;
   ASS_TIPO_MARCA=1;
-	getImage();
+	if(CONF_FOTO)
+  {
+		getImage();
+	}else
+	{
+		 $("#output").load(path_query, 
+					{tipo:9, usuario:ASS_USUARIO, tipo_us:ASS_TIPO, tipo_marca:ASS_TIPO_MARCA, marca:ASS_MARCA,archivo:ASS_FILE} 
+						,function(){						
+							
+					
+					}
+					);
+	}
 	
 	
 }
