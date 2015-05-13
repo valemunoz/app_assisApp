@@ -1,0 +1,117 @@
+<div class="clock">
+<div id="Date"></div>
+  <ul id="reloj">
+      <li class=relojli id="hours"></li>
+      <li class=relojli id="point">:</li>
+      <li class=relojli id="min"></li>
+      <li class=relojli id="point">:</li>
+      <li class=relojli id="sec"></li>
+  </ul>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+// Create two variable with the names of the months and days in an array
+var monthNames = [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]; 
+var dayNames= ["Domindo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"]
+
+// Create a newDate() object
+var newDate=new Date();
+var newDate2=new Date();
+var month=newDate2.getMonth();
+	month++;
+	if(month<10)
+	{
+		month="0"+month;
+	}
+	var dia=newDate2.getDate();
+
+	if(dia<10)
+	{
+		dia="0"+dia;
+	}
+	var hora=newDate2.getHours();
+
+	if(hora<10)
+	{
+		hora="0"+hora;
+	}
+	var minuto=newDate2.getMinutes();
+
+	if(minuto<10)
+	{
+		minuto="0"+minuto;
+	}
+	var segundo=newDate2.getSeconds();
+
+	if(segundo<10)
+	{
+		segundo="0"+segundo;
+	}
+	
+// Extract the current date from Date object
+newDate.setDate(newDate.getDate());
+// Output the day, date, month and year   
+$('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
+
+setInterval( function() {
+	// Create a newDate() object and extract the seconds of the current time on the visitor's
+	var seconds = new Date().getSeconds();
+	// Add a leading zero to seconds value
+	$("#sec").html(( seconds < 10 ? "0" : "" ) + seconds);
+	},1000);
+	
+setInterval( function() {
+	// Create a newDate() object and extract the minutes of the current time on the visitor's
+	var minutes = new Date().getMinutes();
+	// Add a leading zero to the minutes value
+	$("#min").html(( minutes < 10 ? "0" : "" ) + minutes);
+    },1000);
+	
+setInterval( function() {
+	// Create a newDate() object and extract the hours of the current time on the visitor's
+	var hours = new Date().getHours();
+	// Add a leading zero to the hours value
+	$("#hours").html(( hours < 10 ? "0" : "" ) + hours);
+    }, 1000);	
+});
+</script>
+
+<div id="cont_log">
+	<div class="ui-bar ui-bar-a" style="text-align:Center;" id='bienv_home'>
+		Bienvenido! <br>Ingrese C&oacute;digo o Acerque tarjeta para realizar marcaci&oacuten
+		<br><br>
+		
+	</div>
+	<p>
+		<input class=input_form  type="number" id="user" name="user" value="" placeholder="Ingrese C&oacute;digo">
+		<input type="button" value="Validar" onclick="validar(0);">
+		<div data-role="navbar" id="teclado">
+    	<ul>
+    	    <li><a id=teclado_num href="javascript:calcNumero(1);">1</a></li>
+    	    <li><a id=teclado_num href="javascript:calcNumero(2);">2</a></li>
+    	    <li><a id=teclado_num href="javascript:calcNumero(3);">3</a></li>
+    	</ul>   
+    	<ul>    
+    	    <li ><a id=teclado_num href="javascript:calcNumero(4);">4</a></li>
+    	    <li ><a id=teclado_num href="javascript:calcNumero(5);">5</a></li>
+    	    <li ><a id=teclado_num href="javascript:calcNumero(6);">6</a></li>
+    	             
+    	</ul>        
+    	   	<ul>    
+    	    <li ><a id=teclado_num href="javascript:calcNumero(7);">7</a></li>
+    	    <li ><a id=teclado_num href="javascript:calcNumero(8);">8</a></li>
+    	    <li ><a id=teclado_num href="javascript:calcNumero(9);">9</a></li>
+    	            
+    	</ul>       
+    	   	<ul>    
+    	    <li ><a id=teclado_num href="javascript:calcNumero("*");">*</a></li>
+    	    <li ><a id=teclado_num href="javascript:calcNumero(11);">0</a></li>
+    	    <li ><a id=teclado_num href="javascript:cleanNumero();">X</a></li>
+    	    
+    	</ul>
+		</div><!-- /navbar -->
+	</p>
+</div>
+<script>
+	setTimeout('document.getElementById("user").focus();',1000);
+</Script>
