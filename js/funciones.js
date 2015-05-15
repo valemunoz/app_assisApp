@@ -57,7 +57,7 @@ function inicio()
 				{tipo:5, user:user, clave:clave} 
 					,function(){	
 						selectUserBDlocal();
-   
+						selectEmpleadoBDlocal();   
    					selectConfBDlocal();
 				
 					}
@@ -243,6 +243,7 @@ function deviceListo()
    if(MK_INTERNET)
 		{
 			selectMarcaBDlocal();
+			sincronizarEmpleados();
 				$.mobile.loading( 'show', {
 				text: 'Cargando',
 				textVisible: true,
