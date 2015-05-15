@@ -322,7 +322,7 @@ function inicioAdmin()
 }
 function online()
 {
-	alert(MK_INTERNET);
+	
 	if(!MK_INTERNET && MK_INTERNET!=100)
 	{
 		
@@ -350,13 +350,13 @@ function offline()
 {
 	if(MK_INTERNET)
 	{
-		
+		MK_INTERNET=false;
 		openPopstatic(MSG_OFFLINE);
 		alert("cambio de condicion online a offline:"+USER_ESTADO.length);
 		var valida=false;
 		for(i=0;i<USER_ESTADO.length;i++)
 		{
-			
+			alert(USER_ESTADO[i]);
 			if(USER_ESTADO[i]=="0")
 			{
 				valida=true;
@@ -375,7 +375,7 @@ function offline()
 			nfc.addTagDiscoveredListener(
             		    onNfcOffline,
             		    function() {
-            		        //alert("Listening for non-NDEF tags.");
+            		        alert("Listening for non-NDEF tags.");
             		    },
             		    failure
             		);
