@@ -56,6 +56,9 @@ function inicio()
 			$("#output").load(path_query, 
 				{tipo:5, user:user, clave:clave} 
 					,function(){	
+						selectUserBDlocal();
+   
+   					selectConfBDlocal();
 				
 					}
 					);
