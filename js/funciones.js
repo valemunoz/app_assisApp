@@ -243,7 +243,7 @@ function deviceListo()
    if(MK_INTERNET)
 		{
 			selectMarcaBDlocal();
-			sincronizarEmpleados();
+			
 				$.mobile.loading( 'show', {
 				text: 'Cargando',
 				textVisible: true,
@@ -322,7 +322,7 @@ function inicioAdmin()
 }
 function online()
 {
-	
+	alert(MK_INTERNET);
 	if(!MK_INTERNET && MK_INTERNET!=100)
 	{
 		
