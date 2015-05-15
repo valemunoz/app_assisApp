@@ -351,7 +351,7 @@ function offline()
 	{
 		
 		openPopstatic(MSG_OFFLINE);
-		//alert("cambio de condicion online a offline");
+		alert("cambio de condicion online a offline:"+USER_ESTADO.length);
 		var valida=false;
 		for(i=0;i<USER_ESTADO.length;i++)
 		{
