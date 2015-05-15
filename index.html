@@ -46,82 +46,103 @@
       		
    		</div>    		
    	  <div data-role="content" id="contenido_prin" >
-   	  	
-					<div data-role="popup" id="myPopup" class="ui-content">
+   	  	<div data-role="popup" id="myPopup" class="ui-content">
 							<p>This is a popup with the <code>ui-content</code> class added to the popup container.</p>
 					</div>
 					<div data-role="popup" id="myPopup_static" class="ui-content" style="max-width:280px" data-dismissible="false">
 				    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a>
 						<div id=cont_static></div>
 					</div>
-					
 					<div id="menu_sesion">
 					</div>
-					
 					<div id="contenido_sesion">
 						
-					<div class="ui-bar ui-bar-a" style="text-align:Center;" id='bienv_home'>
-    	    	Bienvenido a Asistencia<br><br><br>
-    	    	Ingrese sus credenciales para continuar:
-    	    	<br><br>
-    	    	<input class=input_form  type="text" id="user" name="user" value="" placeholder="Usuario">
-    	    	<input class=input_form  type="password" id="clave" name="clave" value="" placeholder="Contrase&ntilde;a">
-    	    	<input type="button" onclick="inicio();" value="Iniciar">
-    	    	
-    	    	
-					</div>	
+						<div class="ui-bar ui-bar-a" style="text-align:Center;" id='bienv_home'>
+    	    		Bienvenido a Asistencia<br><br><br>
+    	    		Ingrese sus credenciales para continuar:
+    	    		<br><br>
+    	    		<input class=input_form  type="text" id="user" name="user" value="" placeholder="Usuario">
+    	    		<input class=input_form  type="password" id="clave" name="clave" value="" placeholder="Contrase&ntilde;a">
+    	    		<input type="button" onclick="inicio();" value="Iniciar">
+    	    		
+    	    		
+						</div>	
 					
 					
-    	</div>
+    	    </div>
+					
+					
+					
+    	    </div>
     	<div data-role="footer" data-id="foo1" data-position="fixed" id="footer_txt" data-theme="b">
     		<div id="menu_footer"></div>
     	&copy;2015 Architeq Ltda
 			</div><!-- /footer -->
-    	
-    	
-    	  
- </div>
-		<div data-role="page" id="mod_admin" data-theme="a">
 
-	<div data-role="header" >
-	   			 
-      		<h3>Asistencia</h3>
+ </div>
+  <div data-role="page" id="mod_enrolar" data-theme="a">
+
+   	<div data-role="header" >
+	   			
+      		<h1>Asistencia    		 </h1>
       		
-   		</div>   		
-   	  <div data-role="content" id="contenido_admin" >
+   		</div>    		
+   	  <div data-role="content" id="contenido" >
    	  	
-    	  	
+    	  	<div data-role="popup" id="myPopup_clave">
+							<p>This is a completely basic popup, no options set.						</p>
+					</div>
+					
+					<div class="ui-bar ui-bar-a" id=barra_sup style="text-align:center;">
+					 Enrolar Usuario
+					</div>
+    	    <p id="form_login">
+						
+						
+
+						<input class=input_form  type="text" id="nombre" name="nombre" value="" placeholder="Nombre">
+    	    	<input class=input_form  type="text" id="app" name="app" value="" placeholder="Apellido Paterno">
+    	    	<input class=input_form  type="text" id="apm" name="apm" value="" placeholder="Apellido Materno">
+    	    	<input class=input_form  type="text" id="rut" name="rut" value="" placeholder="Rut">
+    	    	<input class=input_form  type="text" id="dv" name="dv" value="" placeholder="Digito Verificador">
+    	    	<input class=input_form  type="text" id="codigo" name="codigo" value="" placeholder="codigo">
+    	    	<label for="slider2">Enrolar Tarjeta?:</label>
+						<select name="slider2" id="slider2" data-role="slider">
+						    <option value="no">No</option>
+						    <option value="si">Si</option>
+						</select>
+    	    	<input type="button" onclick="saveEnrolado();" value="Siguiente">
+						
+					</p>          
+					<div id="output2"></div>
+    	</div>
+    	  
+ 		</div>	
+  <div data-role="page" id="mod_marcas" data-theme="a">
+
+   	<div data-role="header" >
+	   			
+      		<h1>Asistencia    		 </h1>
+      		
+   		</div>    		
+   	  <div data-role="content" id="contenido" >
+   	  	
+    	  	<div data-role="popup" id="myPopup_clave">
+							<p>This is a completely basic popup, no options set.						</p>
+					</div>
+					
+					<div class="ui-bar ui-bar-a" id=barra_sup style="text-align:center;">
+					 Marcaciones del d&iacute;a
+					</div>
+    	    <div id="contenido_marcas">
+						
+						
+					</div>          
 					
     	</div>
     	  
- 		</div>  
-<!--div data-role="page" id="mod_info" data-theme="a">
-
-	<div data-role="header" >
-	   			 <img id=back_boton src="img/left.png" class="ui-btn-left" onclick="volver();">
-      		<h3><img src="img/markan.jpg" width="40%"></h3>
-      		
-   		</div>   		
-   	  <div data-role="content" id="contenido_info" >
-   	  	
-    	  	
-    	</div>
-    	  
- 		</div>  
-<div data-role="page" id="mod_mapa" data-theme="a">
-
-	<div data-role="header" >
-	   			 <img id=back_boton src="img/left.png" class="ui-btn-left" onclick="volver();">
-      		<h3><img src="img/markan.jpg" width="40%"></h3>
-      		
-   		</div>   		
-   	  <div data-role="content" id="contenido_map" >
-   	  	
-    	  	
-    	</div>
-    	  
- 		</div-->  
-
+ 		</div>	
  			<div id=output></div>
+ 			
     </body>
 </html>

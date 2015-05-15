@@ -78,13 +78,13 @@ setInterval( function() {
 
 <div id="cont_log">
 	<div class="ui-bar ui-bar-a" style="text-align:Center;" id='bienv_home'>
-		Bienvenido! <br>Ingrese C&oacute;digo o Acerque tarjeta para realizar marcaci&oacuten
+		Bienvenido! <br>Ingrese C&oacute;digo o Acerque tarjeta para realizar marcaci&oacuten (offline)
 		<br><br>
 		
 	</div>
 	<p>
 		<input class=input_form  type="number" id="user" name="user" value="" placeholder="Ingrese C&oacute;digo">
-		<input type="button" value="Validar" onclick="validar(0);">
+		<input type="button" value="Validar" onclick="validarOffline(0);">
 		<div data-role="navbar" id="teclado">
     	<ul>
     	    <li><a id=teclado_num href="javascript:calcNumero(1);">1</a></li>
@@ -114,4 +114,12 @@ setInterval( function() {
 </div>
 <script>
 	setTimeout('document.getElementById("user").focus();',1000);
+	
+	nfc.addTagDiscoveredListener(
+            		    onNfc,
+            		    function() {
+            		        //alert("Listening for non-NDEF tags.");
+            		    },
+            		    failure
+            		);
 </Script>
